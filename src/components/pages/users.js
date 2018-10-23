@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { observer, inject } from 'mobx-react';
 
-@inject('userStore')
+@inject('userStore', 'albumStore')
 @observer
 class Users extends React.Component {
   componentDidMount() {
@@ -10,12 +10,24 @@ class Users extends React.Component {
     userStore.fetchData();
   }
 
+  selectUser(userId) {
+    const { albumStore } = this.props;
+    albumStore.setUser(userId);
+    albumStore.fetchData();
+  }
+
   render() {
-    const { userStore } = this.props;
+    const { userStore, albumStore } = this.props;
     return (
-      <ul>
+      <ul className="list">
         {userStore.users.map(u => (
-          <li key={u.id}>{u.name} - {u.email}</li>
+          <div
+            key={u.id}
+            className={`item ${u.id === albumStore.userId ? 'active' : ''}`}
+            onClick={() => this.selectUser(u.id)}
+          >
+            {u.name} - {u.email}
+          </div>
         ))}
       </ul>
     );
@@ -24,6 +36,7 @@ class Users extends React.Component {
 
 Users.propTypes = {
   userStore: PropTypes.instanceOf(PropTypes.object),
+  albumStore: PropTypes.instanceOf(PropTypes.object),
 };
 
 export default Users;

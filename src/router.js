@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Router, Route, Switch, Redirect,
 } from 'react-router-dom';
-import { Users, LoadingScreen } from './components/pages';
+import { Main, LoadingScreen } from './components/pages';
 import history from './utils/history';
 
 const CONDITION = true;
@@ -51,8 +51,8 @@ class MyRouter extends React.Component {
     return progress >= 0.9 ? (
       <Router history={history}>
         <Switch>
-          <Route path="/users" component={Users} />
-          <Route path="/" exact={true} render={() => <Redirect to="/users" />} />
+          <Route path="/main" component={Main} />
+          <Route path="/" exact={true} render={() => <Redirect to="/main" />} />
         </Switch>
       </Router>
     ) : (
