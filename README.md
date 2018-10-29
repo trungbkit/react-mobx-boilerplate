@@ -1,7 +1,9 @@
 ### React + MobX boilerplate
 
 * Config
+
   Copy `.env` to `.env.local` and modify your configs.
+  
   Config proxies in `src/setupProxy.js`.
 * Install dependences (Recommend to use `yarn`)
   ```
