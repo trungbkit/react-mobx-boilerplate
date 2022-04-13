@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "cra-template": "1.1.2",
+    "cra-template": "1.2.0",
     "customize-cra": "^1.0.0",
     "mobx": "^6.3.2",
     "mobx-react": "^7.2.0",
